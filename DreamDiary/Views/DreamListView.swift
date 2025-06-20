@@ -11,7 +11,7 @@ import SwiftData
 struct DreamListView: View {
     @Environment(\.modelContext) private var context
     @Query private var dreams: [Dream]
-
+    
     var body: some View {
         NavigationStack {
             List {
@@ -24,18 +24,21 @@ struct DreamListView: View {
                 }
                 .onDelete(perform: deleteDreams)
             }
+            .listStyle(.insetGrouped)
             .navigationTitle("I tuoi sogni")
             .toolbar {
-                NavigationLink(destination: DreamFormView(dream: Dream(title: "", content: ""), isNew: true)) {
-                    Image(systemName: "plus")
-                }
-                NavigationLink(destination:
-                FavoritesView()) {
-                    Image(systemName: "heart.fill")
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: FilteredDreamsView()) {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    }
+                    NavigationLink(destination: DreamFormView(dream: Dream(title: "", content: ""), isNew: true)) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }
     }
+
 
     private func deleteDreams(at offsets: IndexSet) {
         for index in offsets {
