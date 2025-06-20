@@ -23,7 +23,7 @@ struct DreamFormView: View {
                 TextField("Titolo", text: $dream.title)
                 TextEditor(text: $dream.content)
                     .frame(height: 150)
-                DatePicker("Data", selection: $dream.date, displayedComponents: .date)
+                DatePicker("Data", selection: $dream.date)
                 Toggle("Incubo", isOn: $dream.isNightmare)
                 Toggle("Preferito", isOn: $dream.isFavorite)
             }

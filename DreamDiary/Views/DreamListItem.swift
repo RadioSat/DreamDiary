@@ -21,20 +21,20 @@ struct DreamListItem: View {
                     Image(systemName: "heart.fill")
                         .foregroundColor(.red)
                 }
+                if dream.isNightmare {
+                    Label("Incubo", systemImage: "moon.zzz.fill")
+                        .font(.caption2)
+                        .padding(.top, 2)
+                        .padding(.horizontal, 4)
+                        .padding(.vertical, 2)
+                        .background(Color.red.opacity(0.1))
+                        .foregroundColor(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                }
             }
             Text(dream.date.formatted(date: .abbreviated, time: .shortened))
                 .font(.caption)
                 .foregroundStyle(.gray)
-            if dream.isNightmare {
-                Label("Incubo", systemImage: "moon.zzz.fill")
-                    .font(.caption2)
-                    .padding(.top, 2)
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 2)
-                    .background(Color.red.opacity(0.1))
-                    .foregroundColor(.red)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-            }
         }
         .padding(.vertical, 8)
     }
