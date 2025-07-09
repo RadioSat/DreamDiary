@@ -22,10 +22,16 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                DreamListView()
+                DreamListView().biometricProtected()
             }
             .tabItem {
                 Label("Sogni", systemImage: "list.clipboard")
+            }
+            
+            NavigationStack{
+                DreamDataView()
+            }.tabItem{
+                Label("Statistiche", systemImage: "chart.bar")
             }
 
             NavigationStack {

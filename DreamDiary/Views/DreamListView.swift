@@ -10,7 +10,8 @@ import SwiftData
 
 struct DreamListView: View {
     @Environment(\.modelContext) private var context
-    @Query private var dreams: [Dream]
+    @Query(sort: \Dream.date, order: .reverse)
+    private var dreams: [Dream]
     
     var body: some View {
         NavigationStack {

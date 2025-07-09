@@ -19,11 +19,9 @@ struct DreamDetailView: View {
                 Text(dream.title)
                     .font(.largeTitle)
                     .bold()
-
                 Text(dream.date.formatted(date: .long, time: .omitted))
                     .font(.caption)
                     .foregroundStyle(.gray)
-
                 if dream.isNightmare {
                     Label("Incubo", systemImage: "moon.zzz.fill")
                         .font(.caption2)
@@ -33,19 +31,15 @@ struct DreamDetailView: View {
                         .foregroundColor(.red)
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                 }
-
                 if dream.isFavorite {
                     Label("Preferito", systemImage: "heart.fill")
                         .font(.caption2)
                         .foregroundColor(.red)
                 }
-
                 Divider()
-
                 Text(dream.content)
                     .font(.body)
                     .fixedSize(horizontal: false, vertical: true)
-
                 Spacer(minLength: 40)
             }
             .padding()

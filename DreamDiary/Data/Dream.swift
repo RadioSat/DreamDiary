@@ -9,7 +9,8 @@ import Foundation
 import SwiftData
 
 @Model
-class Dream {
+class Dream : Identifiable, @unchecked Sendable {
+    var id = UUID()
     var title: String
     var content: String
     var date: Date

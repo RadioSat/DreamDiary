@@ -13,6 +13,7 @@ struct DreamFormView: View {
     @Environment(\.modelContext) private var context
 
     @Bindable var dream: Dream
+    
     var isNew: Bool
 
     @State private var showValidationError = false
@@ -21,8 +22,7 @@ struct DreamFormView: View {
         Form {
             Section(header: Text("Dati del sogno")) {
                 TextField("Titolo", text: $dream.title)
-                TextEditor(text: $dream.content)
-                    .frame(height: 150)
+                TextEditor(text: $dream.content).frame(height: 150)
                 DatePicker("Data", selection: $dream.date)
                 Toggle("Incubo", isOn: $dream.isNightmare)
                 Toggle("Preferito", isOn: $dream.isFavorite)
