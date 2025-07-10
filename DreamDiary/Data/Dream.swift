@@ -16,12 +16,14 @@ class Dream : Identifiable, @unchecked Sendable {
     var date: Date
     var isNightmare: Bool
     var isFavorite: Bool = false
+    var score: Double
     
-    init(title: String, content: String, date: Date = .now, isNightmare: Bool = false, isFavorite: Bool = false) {
+    init(title: String, content: String, date: Date = .now, isNightmare: Bool = false, isFavorite: Bool = false, score: Double = 0) {
         self.title = title
         self.content = content
         self.date = date
         self.isNightmare = isNightmare
         self.isFavorite = isFavorite
+        self.score = score
     }
 }

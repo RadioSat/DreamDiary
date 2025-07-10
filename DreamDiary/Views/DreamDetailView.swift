@@ -12,8 +12,10 @@ struct DreamDetailView: View {
     @State private var isEditing = false
 
     @Bindable var dream: Dream
-
+    
+    
     var body: some View {
+        let gradient = Gradient(colors: [.red, .yellow, .green])
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Text(dream.title)
@@ -41,6 +43,12 @@ struct DreamDetailView: View {
                     .font(.body)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 40)
+                Gauge(value: dream.score, in: -1...1) {
+                    Label("Score", systemImage: "face.smiling")
+                }
+                .tint(gradient)
+                .gaugeStyle(.accessoryCircular)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
             .padding()
         }
