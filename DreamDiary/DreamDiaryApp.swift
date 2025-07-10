@@ -27,6 +27,22 @@ struct DreamDiaryApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: Dream.self, onSetup: { result in
+            if case let .success(container) = result {
+                Task {
+                    let context = container.mainContext
+                    let fetchDescriptor = FetchDescriptor<Dream>()
+                    let existing = (try? context.fetch(fetchDescriptor)) ?? []
+
+                    guard existing.isEmpty else { return }
+
+                    for dream in PreviewData.sampleDreams {
+                        context.insert(dream)
+                    }
+
+                    try? context.save()
+                }
+            }
+        })
     }
 }
