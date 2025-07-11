@@ -78,6 +78,6 @@ struct DreamFormView: View {
     }
 
     private func formHasChanged() -> Bool {
-        !dream.title.isEmpty || !dream.content.isEmpty || dream.date != .now
+        !dream.title.isEmpty || !dream.content.isEmpty
     }
 }
